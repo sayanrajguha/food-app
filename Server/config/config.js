@@ -1,8 +1,8 @@
 var config = {
-  // mongoDbUrl : 'mongodb://localhost:27017/pottermaniacsDb',
+  mongoDbUrl : 'mongodb://localhost:27017/foodAppDb',
   // defaultPageLimit : 100,
   // pageLimit : 10,
-  secret : '506f747465726d616e69616373202d204120626c6f6720666f7220616c6c20686172727920706f747465722066616e73'
+  secret : '4EA33B08B72E7A45B6406426802BC256046606BF'
 };
 
 module.exports = config;
