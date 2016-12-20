@@ -1,41 +1,45 @@
-// var mongoose = require('mongoose');
-// var mongoosePaginate = require('mongoose-paginate');
-// var bcrypt = require('bcryptjs');
-// var config = require('../config/config');
-// var Schema = mongoose.Schema;
+//var mongoosePaginate = require('mongoose-paginate');
+//var bcrypt = require('bcryptjs');
+//var config = require('../config/config');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-// var UserSchema = new Schema({
-//   username : {
-//     type : String,
-//     unique : true,
-//     required : true
-//   },
-//   email : {
-//     type : String,
-//     required : true,
-//     unique : true
-//   },
-//   firstName : {
-//     type : String,
-//     required : true
-//   },
-//   lastName : {
-//     type : String
-//   },
-//   password : {
-//     type : String,
-//     required : true
-//   },
-//   dob : Date,
-//   contact : String,
-//   socialMeta : {
-//       fb : String,
-//       twitter : String,
-//       linkedin : String
-//   }
-// });
+var UserSchema = new Schema({
+  email : {
+    type : String,
+    required : true,
+    unique : true
+  },
+  contact : {
+    type : Number,
+    required : true
+  },
+  firstName : {
+    type : String,
+    required : true
+  },
+  lastName : String,
+  addresses : [{
+                type : String,
+                address1 : String,
+                address2 : String,
+                landmark : String,
+                city : String,
+                state : String,
+                pincode : Number,
+                lat : Number,
+                lng : Number
+  }],
+  referralID : String,
+  profileImgPath : String,
+  socialMeta : {
+                fb_id : String,
+                gmail_id : String
+  }
+  }
+);
 
-// var User = module.exports = mongoose.model('User',UserSchema);
+var User = module.exports = mongoose.model('User',UserSchema);
 
 // module.exports.createUser = function(newUser, callback) {
 //   bcrypt.genSalt(10, function(err, salt) {

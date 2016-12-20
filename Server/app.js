@@ -10,12 +10,12 @@ var config = require('./config/config');
 var app = express();
 //setting port
 var port = 3000,
-// publicDir = '../Client/public',
+publicDir = '../Client/public',
 fs = require('fs');
 console.log('Port '+port+' enabled...');
 
 // view engine setup
-// app.set('views', publicDir);
+app.set('views', publicDir);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -38,17 +38,19 @@ console.log('Enabling Cookie Parser...');
 app.use(cookieParser());
 console.log('Cookie Parser enabled...');
 //static
-// app.use(express.static(publicDir));
+app.use(express.static(publicDir));
 //passport initialize
 // app.use(passport.initialize());
 
 //mongoose connect
-// console.log('Connecting mongoose...');
-// mongoose.connect(config.mongoDbUrl);
-// console.log('Mongoose connected...');
+console.log('Connecting mongoose...');
+mongoose.connect(config.mongoDbUrl);
+console.log('Mongoose connected...');
 
 //including passport code 
 // require('./config/passport')(passport);
+
+
 
 //controller routes
 app.use('/index', function(req,res,next) {
@@ -59,6 +61,10 @@ app.use('/other', function(req,res,next) {
     console.log('inside other route');
     res.send('Other also OK');
 });
+
+
+
+
 //starting server
 console.log("Starting server...");
 var server = app.listen(port, function() {
